@@ -1,14 +1,11 @@
 # SoloEscape_Web_Server
 SoloEscape Server using Express
 
-# 차례
+##Table of contents
 
-
-
- - [Tech Stack](#tech-stack)
- - [Directory Structure](#directory-structure)
- - [etc...](#etc)
-
+- [Tech Stack](#tech-stack)
+- [Directory Structure](#directory-structure)
+- [Etc](#etc)
 
 ##Tech Stack
 
@@ -50,7 +47,7 @@ SoloEscape Server using Express
 
 https://stackshare.io/
 
-##directory structure 
+##Directory Structure
 
 <pre>
 (예시)
@@ -84,3 +81,6 @@ SoloEscape_Web_Server/
     └── index.jade
     └── layout.jade
 </pre>
+
+
+##Etc
