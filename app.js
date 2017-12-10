@@ -40,9 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // 라우터 미들웨어 설정
-app.use('/', index);
+app.use('/index', index);
 
-app.use('/users', users);
+app.use('/apiTest', users);
 
 app.use('/oauth2callback', oauth2Callback); // 인증 관련 callback test
 
