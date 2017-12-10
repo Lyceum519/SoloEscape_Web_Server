@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="820207434045-2151irsgu2dlqmhbioaqkq0km6l2sf76.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+
+    <body>
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <!--<a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile&include_granted_scopes=true&state=state_parameter_passthrough_value&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth2callback&response_type=token&client_id=820207434045-2151irsgu2dlqmhbioaqkq0km6l2sf76.apps.googleusercontent.com">send request to resource server</a>-->
+
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+
+    <script>
+    function oauthSignIn() {
+        // Google's OAuth 2.0 endpoint for requesting an access token
+        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/auth';
+
+        // Create <form> element to submit parameters to OAuth 2.0 endpoint.
+        var form = document.createElement('form');
+        form.setAttribute('method', 'GET'); // Send as a GET request.
+        form.setAttribute('action', oauth2Endpoint);
+
+        // Parameters to pass to OAuth 2.0 endpoint.
+        var params = {
+            'client_id': 'YOUR_CLIENT_ID',
+            'redirect_uri': 'localhost:3000',
+            'response_type': 'token',
+            'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+            'include_granted_scopes': 'true',
+            'state': 'pass-through value'
+        };
+
+        // Add form parameters as hidden input values.
+        for (var p in params) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', p);
+            input.setAttribute('value', params[p]);
+            form.appendChild(input);
+        }
+
+        // Add form to page and submit it to open the OAuth 2.0 endpoint.
+        document.body.appendChild(form);
+        form.submit();
+    }
+    </script>
+    <script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        };
+
+    </script>
+
+    <script>
+        var clientInfo =
+            {
+                "web" :
+                    {
+                        "client_id" : "820207434045-2151irsgu2dlqmhbioaqkq0km6l2sf76.apps.googleusercontent.com",
+                        "project_id" : "soloescape-187209",
+                        "auth_uri" : "https://accounts.google.com/o/oauth2/auth",
+                        "token_uri" : "https://accounts.google.com/o/oauth2/token",
+                        "auth_provider_x509_cert_url" : "https://www.googleapis.com/oauth2/v1/certs",
+                        "client_secret" : "2Tdo1zp2VCSg1cjpsn8Z5lXP",
+                        "redirect_uris" : ["https://localhost:3000/oauth2callback"],
+                        "javascript_origins":["http://localhost:3000"]
+                    }
+            }
+
+
+    </script>
+
+
+  </body>
+</html>

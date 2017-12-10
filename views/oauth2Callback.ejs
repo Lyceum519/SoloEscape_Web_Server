@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body onload="myFunction()">
+
+    <form action='https://www.googleapis.com/drive/v2/files' method="get" enctype="application/x-www-form-urlencoded">
+        code : <input type="text" name="access_token" ><br>
+
+        <input type="submit">
+    </form>
+
+
+    <script>
+        function myFunction() {
+            var queryString = location.hash.substring(1);
+            var params = {};
+            var access_token;
+            var regex = /([^&=]+)=([^&]*)/g, m;
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+
+            if(params['access_token']) {
+                console.log(222);
+                access_token = params['access_token'];
+                console.log(access_token);
+                document.getElementsByName('access_token')[0].value = access_token ;
+            }
+
+        };
+
+    </script>
+    </body>
+</html>
