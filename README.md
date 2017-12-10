@@ -1,13 +1,13 @@
 # SoloEscape_Web_Server
 SoloEscape Server using Express
 
-##Table of contents
+## Table of contents
 
 - [Tech Stack](#tech-stack)
 - [Directory Structure](#directory-structure)
 - [Etc](#etc)
 
-##Tech Stack
+## Tech Stack
 
 * 언어 및 프레임워크 : JavaScript, Node.js - Express.js
 
@@ -47,7 +47,7 @@ SoloEscape Server using Express
 
 https://stackshare.io/
 
-##Directory Structure
+## Directory Structure
 
 <pre>
 (예시)
