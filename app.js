@@ -35,7 +35,15 @@ app.use(cookieParser());
 
 var configDB = require('./config/database.js');
 
-mysql.createConnection(configDB); // connect to database
+var connection = mysql.createConnection(configDB); // connect to database
+
+connection.connect((err) => {
+  if(err) {
+      console.log(err);
+      return;
+  }
+  console.log( 'mysql connect completed' );
+});
 
 require('./config/passport')(passport); // pass passport for configuration
 
