@@ -59,7 +59,7 @@ module.exports = function(app, passport) {
 
     // send to google to do the authentication
     app.get('/auth/google',
-        passport.authenticate('google', { scope : ['openid', 'email'] }),
+        passport.authenticate('google', { scope : ['openid', 'email'], accessType: 'offline' }),
         function (req, res) {
 
         });

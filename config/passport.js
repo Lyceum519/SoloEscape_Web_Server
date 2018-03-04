@@ -5,6 +5,8 @@ var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 var configAuth = require('./auth'); // use this one for testing
 
+var User = require('../bin/userTemp.js');
+
 module.exports = function(passport) {
 
     // =========================================================================
@@ -130,8 +132,15 @@ module.exports = function(passport) {
         },
         function(req, token, refreshToken, profile, done) {
 
+
+            console.log(token)
+            console.log("-----")
+            console.log(refreshToken)
+            // console.log(profile);
             // asynchronous
-            process.nextTick(function() {
+
+
+            // process.nextTick(function() {
 
                 // // check if the user is already logged in
                 // if (!req.user) {
@@ -188,8 +197,8 @@ module.exports = function(passport) {
                 //     });
                 //
                 // }
-                return done(null, profile);
-            });
+            //     return done(null, profile);
+            // });
 
         }));
 
