@@ -5,8 +5,6 @@ var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 var configAuth = require('./auth'); // use this one for testing
 
-var User = require('../bin/userTemp.js');
-
 module.exports = function(passport) {
 
     // =========================================================================
@@ -22,9 +20,9 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
+        // User.findById(id, function(err, user) {
+        //     done(err, user);
+        // });
     });
 
     // =========================================================================
