@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var local_user = sequelize.define('local_user', {
 
-    user_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'local_user',
       freezeTableName: true,
       underscored: true,
-      timestamps: false
+      timestamps: true
   });
   local_user.associate = function(models) {
     // associations can be defined here

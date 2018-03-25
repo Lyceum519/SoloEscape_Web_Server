@@ -33,17 +33,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-var configDB = require('./config/database.js');
-
-var connection = mysql.createConnection(configDB); // connect to database
-
-connection.connect((err) => {
-  if(err) {
-      console.log(err);
-      return;
-  }
-  console.log( 'mysql connect completed' );
-});
+// var configDB = require('./config/database.js');
+//
+// var connection = mysql.createConnection(configDB); // connect to database
+//
+// connection.connect((err) => {
+//   if(err) {
+//       console.log(err);
+//       return;
+//   }
+//   console.log( 'mysql connect completed' );
+// });
 
 app.get('/profile', function(req, res){
   connection.query('SELECT * from profile', function(err, rows) {
