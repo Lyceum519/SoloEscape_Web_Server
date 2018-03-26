@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var local_user = sequelize.define('local_user', {
+  var local_user = sequelize.define('LocalUser', {
 
     id: {
         type: DataTypes.INTEGER,

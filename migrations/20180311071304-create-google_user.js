@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        return queryInterface.createTable('google_users', {
+        return queryInterface.createTable('google_user', {
             id: {
                 type: Sequelize.STRING,
                 primaryKey: true,
@@ -38,6 +38,6 @@ module.exports = {
         );
     },
     down: (queryInterface, Sequelize) => {
-        return queryInterface.dropTable('google_users');
+        return queryInterface.dropTable('google_user');
     }
 };

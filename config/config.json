@@ -1,18 +1,18 @@
 
 {
   "development": {
-    "username": "test",
-    "password": "test1234",
+    "username": "beyond",
+    "password": "beyondamerica",
     "database": "solo_escape",
-    "host": "127.0.0.1",
+    "host": "soloescapedbinstance.c2e92rwilysc.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
 
   "test": {
-    "username": "",
-    "password": null,
-    "database": "",
-    "host": "",
+    "username": "test",
+    "password": "test1234",
+    "database": "solo_escape",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }

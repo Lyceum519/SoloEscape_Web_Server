@@ -1,6 +1,4 @@
 var LocalStrategy    = require('passport-local').Strategy;
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// var TwitterStrategy  = require('passport-twitter').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
 
 var configAuth = require('./auth'); // use this one for testing
@@ -14,11 +12,13 @@ module.exports = function(passport) {
     // passport needs ability to serialize and unserialize users out of session
 
     // used to serialize the user for the session
+    // 사용자가 인증을 성공할 경우
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
 
     // used to deserialize the user
+    // 이후 사용자의 요청 시마다 호출
     passport.deserializeUser(function(id, done) {
         // User.findById(id, function(err, user) {
         //     done(err, user);

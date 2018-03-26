@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('local_users', {
+    return queryInterface.createTable('local_user', {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -28,6 +28,6 @@ module.exports = {
     );
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('local_users');
+    return queryInterface.dropTable('local_user');
   }
 };
