@@ -8,6 +8,7 @@ var env       = process.env.NODE_ENV || 'development';   // 개발 DB 설정
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
+console.log(44444);
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {

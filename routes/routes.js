@@ -1,3 +1,5 @@
+const db = require('../models');
+
 module.exports = function(app, passport) {
 
 // normal routes ===============================================================
@@ -21,6 +23,20 @@ module.exports = function(app, passport) {
         // req.logout();
         // res.redirect('/');
         res.send("do logout and routing to main page");
+    });
+
+    // GET LOCAL USER DATA ====================
+    app.get('/googleuser', function(req, res) {
+        console.log(3);
+        db['GoogleUser'].findAll()
+        .then(function(users) {
+            console.log(1);
+          res.json(users)
+          // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
+        }).catch(function(e){
+            console.log(2);
+            console.log(e);
+        });
     });
 
 // =============================================================================

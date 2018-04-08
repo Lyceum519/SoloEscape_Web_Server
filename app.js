@@ -11,19 +11,10 @@ var passport = require('passport');
 var session = require('express-session');
 // 사용자 정의 모듈 추출
 
-
 // 서버 생성
 var app = express();
 
-// 서버 설정 - view engine setup
-// 일반 test 시
-// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-// react build folder 이용시 ( 파일 위치 고려하기 )
-// app.set('views', path.join(__dirname, '../SoloEscape_Web_Client/build'));
-// app.engine('html', require('ejs').renderFile);
-// app.set('view engine', 'html');
-
 
 // configuration ===============================================================
 
@@ -32,79 +23,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// var configDB = require('./config/database.js');
-//
-// var connection = mysql.createConnection(configDB); // connect to database
-//
-// connection.connect((err) => {
-//   if(err) {
-//       console.log(err);
-//       return;
-//   }
-//   console.log( 'mysql connect completed' );
-// });
-
-app.get('/profile', function(req, res){
-  connection.query('SELECT * from profile', function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/profile/:user_id', function(req, res){
-  var user_id = req.params.user_id;
-  connection.query('SELECT * from profile WHERE user_id = ?', [user_id], function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/match', function(req, res){
-  connection.query('SELECT * from match', function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/match/:user_id', function(req, res){
-  var user_id = req.params.user_id;
-  connection.query('SELECT * from match WHERE user_id = ?', [user_id], function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/tag', function(req, res){
-  connection.query('SELECT * from tag', function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/tag/:tag_id', function(req, res){
-  var tag_id = req.params.tag_id;
-  connection.query('SELECT * from tag WHERE tag_id = ?', [tag_id], function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/user_to_tag', function(req, res){
-  connection.query('SELECT * from user_to_tag', function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
-app.get('/user_to_tag/:user_id', function(req, res){
-  var user_id = req.params.user_id;
-  connection.query('SELECT * from profile WHERE user_id = ?', [user_id], function(err, rows) {
-    if(err) throw err;
-    res.send(rows);
-  });
-});
-
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -126,7 +44,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -137,8 +54,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.send('error');
 });
-
-
 
 // 모듈화
 module.exports = app;
