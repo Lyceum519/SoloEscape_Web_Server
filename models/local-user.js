@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       tableName: 'local_user',
       freezeTableName: true,
       underscored: true,
-      timestamps: true
+      timestamps: false
   });
   local_user.associate = function(models) {
     // associations can be defined here

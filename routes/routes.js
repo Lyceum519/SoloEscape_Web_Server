@@ -25,16 +25,35 @@ module.exports = function(app, passport) {
         res.send("do logout and routing to main page");
     });
 
-    // GET LOCAL USER DATA ====================
+    // GET GOOGLE USER DATA ====================
     app.get('/googleuser', function(req, res) {
-        console.log(3);
         db['GoogleUser'].findAll()
         .then(function(users) {
-            console.log(1);
           res.json(users)
           // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
         }).catch(function(e){
-            console.log(2);
+            console.log(e);
+        });
+    });
+
+    // GET LOCAL USER DATA ====================
+    app.get('/localuser', function(req, res) {
+        db['LocalUser'].findAll()
+        .then(function(users) {
+          res.json(users)
+          // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
+        }).catch(function(e){
+            console.log(e);
+        });
+    });
+
+    // GET TAG DATA ====================
+    app.get('/tag', function(req, res) {
+        db['Tag'].findAll()
+        .then(function(tags) {
+          res.json(tags)
+          // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
+        }).catch(function(e){
             console.log(e);
         });
     });
