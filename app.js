@@ -9,6 +9,7 @@ var fs = require('fs');
 var mysql = require('mysql');
 var passport = require('passport');
 var session = require('express-session');
+var cors = require('cors');
 // 사용자 정의 모듈 추출
 
 // 서버 생성
@@ -23,6 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 require('./config/passport')(passport); // pass passport for configuration
 
