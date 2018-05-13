@@ -11,12 +11,12 @@ module.exports = function(app, passport) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
-        // res.render('profile.ejs', {
-        //     user : req.user
-        // });
-        res.send("routing to profile page and send user info");
-    });
+    // app.get('/profile', isLoggedIn, function(req, res) {
+    //     // res.render('profile.ejs', {
+    //     //     user : req.user
+    //     // });
+    //     res.send("routing to profile page and send user info");
+    // });
 
     // LOGOUT ==============================
     app.get('/logout', function(req, res) {
@@ -31,9 +31,36 @@ module.exports = function(app, passport) {
         .then(function(users) {
           res.json(users)
           // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
-        }).catch(function(e){
+        }).catch(function(e) {
             console.log(e);
         });
+    });
+
+    // GET PROFILE DATA =========================
+    app.get('/profile', function(req, res) {
+        console.log(4444, "get profile")
+        db['Profile'].findAll()
+        .then(function(profiles) {
+            res.json(profiles)
+        }).catch(function(e) {
+            console.log(e);
+        });
+    });
+
+    // GET PROFILE DATA BY ID ===================
+    app.get('/profile/:id', function(req, res) {
+        console.log(33333, "get profile")
+        console.log(req.params.id)
+        db['Profile'].findAll({
+            where: {
+                id: req.params.id,
+            }
+        })
+        .then(function(profiles) {
+            res.json(profiles)
+        }).catch(function(e) {
+            console.log(e);
+        })
     });
 
     // GET LOCAL USER DATA ====================
@@ -53,7 +80,7 @@ module.exports = function(app, passport) {
         .then(function(tags) {
           res.json(tags)
           // [{name: 'Hoony', age: 27}, {name: 'Ice', age: 22}]
-        }).catch(function(e){
+        }).catch(function(e) {
             console.log(e);
         });
     });
