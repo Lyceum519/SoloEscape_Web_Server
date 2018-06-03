@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BLOB('long'),
         allowNull:true,
     },
+    tag: {
+      type: DataTypes.STRING(32),
+        allowNull: true,
+    },
 
   }, {
       classMethods: {},
