@@ -7,6 +7,7 @@
     "sequel-migrate": "node_modules/.bin/sequelize db:migrate"
   },
   "dependencies": {
+    "bcrypt": "^2.0.1",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "cors": "~2.8.4",
