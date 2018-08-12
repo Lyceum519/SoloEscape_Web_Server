@@ -1,4 +1,7 @@
+const multer  = require('multer')
 const db = require('../models');
+const upload = multer({dest: 'uploads/' });
+
 
 module.exports = function(app, passport) {
 
@@ -40,6 +43,22 @@ module.exports = function(app, passport) {
             console.log(e);
         });
     });
+
+    // SAVE PROFILE DATE ========================
+    app.post('/profile-save', function(req, res) {
+        console.log(1111, req.body)
+        db['Profile'].save({
+            id: req.body.id,
+            nickname: req.body.nickname,
+            picture: new Blob(),
+            tag: req.body.tag,
+        })
+        .then((profiles) => {
+            console.log("save profile success", profiles)
+        }).catch((e) => {
+            console.log("save profile error", e);
+        })
+z    });
 
     // GET PROFILE DATA BY ID ===================
     app.get('/profile/:id', function(req, res) {

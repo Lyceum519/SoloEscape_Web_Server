@@ -10,6 +10,7 @@ var mysql = require('mysql');
 var passport = require('passport');
 var session = require('express-session');
 var cors = require('cors');
+var multer  = require('multer')
 // 사용자 정의 모듈 추출
 
 // 서버 생성
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
+app.use(multer({dest:'./uploads/'}).single('avatar'));
 
 require('./config/passport')(passport); // pass passport for configuration
 
